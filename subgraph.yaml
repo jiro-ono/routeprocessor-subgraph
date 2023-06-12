@@ -1,0 +1,23 @@
+specVersion: 0.0.4
+schema:
+  file: ./schema.graphql
+dataSources:
+  - kind: ethereum/contract
+    name: RouteProcessor3
+    network: optimism
+    source:
+      address: '0x4C5D5234f232BD2D76B96aA33F5AE4FCF0E4BFAb'
+      startBlock: 94267522
+      abi: RouteProcessor3
+    mapping:
+      kind: ethereum/events
+      apiVersion: 0.0.6
+      language: wasm/assemblyscript
+      file: ./src/mappings/route-processor3.ts
+      entities: []
+      abis:
+        - name: RouteProcessor3
+          file: ./abis/RouteProcessor3.json
+      eventHandlers:
+        - event: Route(indexed address,address,indexed address,indexed address,uint256,uint256,uint256)
+          handler: handleRoute
